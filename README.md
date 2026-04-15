@@ -20,6 +20,7 @@
 ## 📱 项目简介
 
 汪汪机是一款AI-Native小手机，旨在为用户提供情感陪伴和社交体验。
+前置项目：[基于Flutter和Dart构建的汪汪机](https://github.com/Liunian06/LNPhone)
 
 ### 核心特性
 
