@@ -1,0 +1,32 @@
+name: Build Flutter Web and Deploy Pages
+on:
+  push:
+    branches: [ main ]
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      - name: 安装Flutter环境
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: latest
+
+      - name: 编译Flutter网页
+        run: |
+          cd wangwang_phone
+          flutter pub get
+          flutter build web --release
+
+      - name: 部署到GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: wangwang_phone/build/web
